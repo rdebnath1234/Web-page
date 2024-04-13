@@ -1,8 +1,10 @@
 import React from "react";
+// Import the Username component
 import Username from "./username";
 class LoginPage extends React.Component {
   constructor() {
     super();
+    // Initialize state and refs in the constructor
     this.username = React.createRef();
     this.password = React.createRef();
     this.state = {
@@ -11,12 +13,9 @@ class LoginPage extends React.Component {
       success: false,
     };
   }
+  // Define the submit function to handle form submission
   submit = (e) => {
     e.preventDefault(); // Prevent the form from submitting normally
-    // Set the state with the values from the form fields 
-    // Check if the username and password are correct 
-    // If they are correct, set the success state to true 
-    // If they are not correct, alert the user
     if (
       this.username.current.value === "admin" &&
       this.password.current.value === "admin"
@@ -66,10 +65,12 @@ class LoginPage extends React.Component {
               </div>
             </div>
           </form>
-        </div>
-        {this.state.success ? (
+          <div className="row  ">
+          {this.state.success ? (
           <Username user={this.state.username}></Username>
         ) : null}
+          </div>
+        </div>
       </>
     );
   }
