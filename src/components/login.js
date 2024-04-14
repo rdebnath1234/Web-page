@@ -8,23 +8,39 @@ class LoginPage extends React.Component {
     this.username = React.createRef();
     this.password = React.createRef();
     this.state = {
-      username: "",
-      password: "",
-      success: false,
+      contributions:  {
+        "loginPairs":
+        [
+          {
+            username: "",
+            password: "",
+            success: false,
+          },
+          {
+            username: "admin",
+            password: "admin",
+            success: true,
+          }
+        ]
+      }
     };
   }
   // Define the submit function to handle form submission
   submit = (e) => {
     e.preventDefault(); // Prevent the form from submitting normally
-    if (
-      this.username.current.value === "admin" &&
-      this.password.current.value === "admin"
-    ) {
+    // Get the username and password from the form
+    const username = this.username.current.value;
+    const password = this.password.current.value;
+    // Check if the username and password are correct
+    if (this.state.contributions.loginPairs[1].username === username && 
+      this.state.contributions.loginPairs[1].password === password) {
+      // If the username and password are correct, set the success state to true
       this.setState({
         success: true,
-        username: this.username.current.value,
       });
-    } else {
+    } 
+      // If the username and password are incorrect, alert the user
+    else {
       alert("Invalid username or password");
     }
   };
@@ -67,7 +83,7 @@ class LoginPage extends React.Component {
           </form>
           <div className="row  ">
           {this.state.success ? (
-          <Username user={this.state.username}></Username>
+          <Username user={this.state.contributions.loginPairs[1].username}></Username>
         ) : null}
           </div>
         </div>
