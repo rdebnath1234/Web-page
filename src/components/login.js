@@ -21,6 +21,11 @@ class LoginPage extends React.Component {
             password: "admin",
             success: true,
           }
+          {
+            username: "admin12",
+            password: "admin12",
+            success: true,
+          }
         ]
       }
     };
